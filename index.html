@@ -12,40 +12,25 @@
 
 
         const root = document.getElementById("root");
-
-        const Title = () => (
-            <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>Hello I'm a title</h3>
-        );
-
-        // const h3 = React.createElement("h3", {
-        //     id: "title",
-        //     onMouseEnter: () => console.log('mouse enter'),
-        // }, "Hello I'm a span");
+        let counter = 0;
         
-        const Button = () => ( <button style={{
-            backgroundColor: "tomato",
-        }}
-        onClick={() =>console.log("im clicked")}
-        >
-            Click me
-        </button>
-        );
-
-        // const btn = React.createElement("button", {
-        //     onClick: () => console.log('im clicked'),
-        //     style: {
-        //         backgroundColor: "tomato",
-        //     },
-        // }, "Click me");
-
+        function countUp(){
+            counter = counter + 1;
+            render();
+        }
+        
+        function render() {
+            ReactDOM.render(<Container />, root);
+        }
 
         const Container = () => (<div>
-            <Title />
-            <Button />
-        </div>);
+            <h3>Total clicks: {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>
+        );
 
         //const container = React.createElement("div", null, [Title, Button]);
         
-        ReactDOM.render(<Container />, root);
+        render();
     </script>
 </html>
